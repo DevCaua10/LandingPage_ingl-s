@@ -8,22 +8,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .hero-bg {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .course-card {
+            transition: all 0.3s ease;
         }
         
         .course-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
         }
         
         .testimonial-card {
             transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
         
         .testimonial-card:hover {
-            transform: scale(1.03);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
         }
         
         .animate-float {
@@ -32,12 +39,12 @@
         
         @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-12px); }
             100% { transform: translateY(0px); }
         }
         
         .teacher-card:hover img {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
         
         .progress-bar {
@@ -48,30 +55,69 @@
             animation: float 3s ease-in-out infinite;
             animation-delay: 0.5s;
         }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #2563eb;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .input-focus:focus {
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 4px;
+            bottom: -8px;
+            left: 25%;
+            background-color: #2563eb;
+            border-radius: 2px;
+        }
     </style>
 </head>
-<body class="font-sans antialiased text-gray-800">
+<body class="font-sans antialiased text-gray-800 scroll-smooth">
     <!-- Header -->
-    <header class="fixed w-full bg-white shadow-sm z-50">
+    <header class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center">
                 <i class="fas fa-language text-2xl text-blue-600 mr-2"></i>
                 <span class="text-xl font-bold text-blue-600">Fluency</span>
             </div>
             <nav class="hidden md:flex space-x-8">
-                <a href="#home" class="text-gray-700 hover:text-blue-600 transition">Início</a>
-                <a href="#method" class="text-gray-700 hover:text-blue-600 transition">Método</a>
-                <a href="#teachers" class="text-gray-700 hover:text-blue-600 transition">Professores</a>
-                <a href="#courses" class="text-gray-700 hover:text-blue-600 transition">Cursos</a>
-                <a href="#results" class="text-gray-700 hover:text-blue-600 transition">Resultados</a>
-                <a href="#testimonials" class="text-gray-700 hover:text-blue-600 transition">Depoimentos</a>
-                <a href="#faq" class="text-gray-700 hover:text-blue-600 transition">FAQ</a>
+                <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 transition">Início</a>
+                <a href="#method" class="nav-link text-gray-700 hover:text-blue-600 transition">Método</a>
+                <a href="#teachers" class="nav-link text-gray-700 hover:text-blue-600 transition">Professores</a>
+                <a href="#courses" class="nav-link text-gray-700 hover:text-blue-600 transition">Cursos</a>
+                <a href="#results" class="nav-link text-gray-700 hover:text-blue-600 transition">Resultados</a>
+                <a href="#testimonials" class="nav-link text-gray-700 hover:text-blue-600 transition">Depoimentos</a>
+                <a href="#faq" class="nav-link text-gray-700 hover:text-blue-600 transition">FAQ</a>
             </nav>
             <button class="md:hidden text-gray-700" id="mobile-menu-button">
                 <i class="fas fa-bars text-xl"></i>
             </button>
             <div class="hidden md:block">
-                <a href="#contact" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Agende uma aula</a>
+                <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">Agende uma aula</a>
             </div>
         </div>
         
@@ -85,7 +131,7 @@
                 <a href="#results" class="text-gray-700 hover:text-blue-600 transition">Resultados</a>
                 <a href="#testimonials" class="text-gray-700 hover:text-blue-600 transition">Depoimentos</a>
                 <a href="#faq" class="text-gray-700 hover:text-blue-600 transition">FAQ</a>
-                <a href="#contact" class="bg-blue-600 text-white px-4 py-2 rounded text-center hover:bg-blue-700 transition">Agende uma aula</a>
+                <a href="#contact" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-center hover:bg-blue-700 transition">Agende uma aula</a>
             </div>
         </div>
     </header>
@@ -94,35 +140,35 @@
     <section class="hero-bg min-h-screen flex items-center pt-16" id="home">
         <div class="container mx-auto px-4 py-20 text-white">
             <div class="max-w-2xl">
-                <h1 class="text-4xl md:text-5xl font-bold mb-6">Inglês simplificado, resultados reais</h1>
-                <p class="text-xl mb-8">Nosso método minimalista elimina a complexidade e foca no que realmente importa para você alcançar a fluência.</p>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Inglês simplificado, <span class="text-blue-300">resultados reais</span></h1>
+                <p class="text-xl md:text-2xl mb-8 text-blue-100">Nosso método minimalista elimina a complexidade e foca no que realmente importa para você alcançar a fluência.</p>
                 <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                    <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded text-center font-medium transition">Comece agora</a>
-                    <a href="#method" class="bg-white hover:bg-gray-100 text-blue-600 px-6 py-3 rounded text-center font-medium transition">Conheça o método</a>
+                    <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-center font-medium transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">Comece agora</a>
+                    <a href="#method" class="bg-white/20 hover:bg-white/30 text-white px-8 py-4 rounded-lg text-center font-medium transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg backdrop-blur-sm">Conheça o método</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Stats Section -->
-    <section class="bg-gray-50 py-12">
+    <section class="bg-gray-50 py-16">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div class="p-4">
-                    <div class="text-3xl font-bold text-blue-600 mb-2">10+</div>
-                    <div class="text-gray-600">Anos de experiência</div>
+                <div class="p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">10+</div>
+                    <div class="text-gray-600 font-medium">Anos de experiência</div>
                 </div>
-                <div class="p-4">
-                    <div class="text-3xl font-bold text-blue-600 mb-2">5K+</div>
-                    <div class="text-gray-600">Alunos formados</div>
+                <div class="p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">5K+</div>
+                    <div class="text-gray-600 font-medium">Alunos formados</div>
                 </div>
-                <div class="p-4">
-                    <div class="text-3xl font-bold text-blue-600 mb-2">98%</div>
-                    <div class="text-gray-600">Taxa de satisfação</div>
+                <div class="p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">98%</div>
+                    <div class="text-gray-600 font-medium">Taxa de satisfação</div>
                 </div>
-                <div class="p-4">
-                    <div class="text-3xl font-bold text-blue-600 mb-2">20</div>
-                    <div class="text-gray-600">Países com alunos</div>
+                <div class="p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">20</div>
+                    <div class="text-gray-600 font-medium">Países com alunos</div>
                 </div>
             </div>
         </div>
@@ -132,12 +178,12 @@
     <section class="py-20" id="method">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold mb-4">O Método Fluency</h2>
+                <h2 class="text-3xl font-bold mb-4 section-title">O Método Fluency</h2>
                 <p class="text-xl text-gray-600 max-w-2xl mx-auto">Focamos no essencial para que você aprenda de forma eficiente e sem complicações.</p>
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition">
+                <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-lg transition border border-gray-100">
                     <div class="text-blue-600 text-4xl mb-4">
                         <i class="fas fa-bullseye"></i>
                     </div>
@@ -145,7 +191,7 @@
                     <p class="text-gray-600">Priorizamos o que você realmente precisa para se comunicar, eliminando conteúdos desnecessários.</p>
                 </div>
                 
-                <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition">
+                <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-lg transition border border-gray-100">
                     <div class="text-blue-600 text-4xl mb-4">
                         <i class="fas fa-user-clock"></i>
                     </div>
@@ -153,7 +199,7 @@
                     <p class="text-gray-600">Aulas adaptáveis ao seu ritmo e horários, sem pressão ou prazos irreais.</p>
                 </div>
                 
-                <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition">
+                <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-lg transition border border-gray-100">
                     <div class="text-blue-600 text-4xl mb-4">
                         <i class="fas fa-chart-line"></i>
                     </div>
@@ -165,7 +211,7 @@
             <!-- Expanded Method Details -->
             <div class="mt-16 grid md:grid-cols-2 gap-12 items-center">
                 <div class="relative">
-                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Método Fluency" class="rounded-lg shadow-lg w-full">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Método Fluency" class="rounded-lg shadow-xl w-full">
                     <div class="absolute -bottom-5 -right-5 bg-blue-600 text-white px-6 py-3 rounded-lg shadow-lg floating-badge">
                         <span class="font-bold">Método Comprovado</span>
                     </div>
@@ -174,16 +220,16 @@
                     <h3 class="text-2xl font-bold mb-6">Por que nosso método funciona?</h3>
                     <div class="space-y-6">
                         <div class="flex items-start">
-                            <div class="bg-blue-100 text-blue-600 p-2 rounded-full mr-4">
+                            <div class="bg-blue-100 text-blue-600 p-3 rounded-full mr-4">
                                 <i class="fas fa-check-circle"></i>
                             </div>
                             <div>
                                 <h4 class="font-bold mb-1">Aprendizado Contextualizado</h4>
-                                <p class="text-gray-600">Você aprenda inglês através de situações reais do seu dia a dia, tornando o aprendizado mais relevante e memorável.</p>
+                                <p class="text-gray-600">Você aprende inglês através de situações reais do seu dia a dia, tornando o aprendizado mais relevante e memorável.</p>
                             </div>
                         </div>
                         <div class="flex items-start">
-                            <div class="bg-blue-100 text-blue-600 p-2 rounded-full mr-4">
+                            <div class="bg-blue-100 text-blue-600 p-3 rounded-full mr-4">
                                 <i class="fas fa-check-circle"></i>
                             </div>
                             <div>
@@ -192,7 +238,7 @@
                             </div>
                         </div>
                         <div class="flex items-start">
-                            <div class="bg-blue-100 text-blue-600 p-2 rounded-full mr-4">
+                            <div class="bg-blue-100 text-blue-600 p-3 rounded-full mr-4">
                                 <i class="fas fa-check-circle"></i>
                             </div>
                             <div>
@@ -210,12 +256,12 @@
     <section class="py-20 bg-gray-50" id="teachers">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold mb-4">Nossos Professores</h2>
+                <h2 class="text-3xl font-bold mb-4 section-title">Nossos Professores</h2>
                 <p class="text-xl text-gray-600 max-w-2xl mx-auto">Equipe de especialistas com experiência internacional.</p>
             </div>
             
             <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <div class="bg-white rounded-lg overflow-hidden shadow-md teacher-card transition">
+                <div class="bg-white rounded-xl overflow-hidden shadow-md teacher-card transition hover:shadow-lg">
                     <div class="relative overflow-hidden h-64">
                         <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Professora Ana" class="w-full h-full object-cover transition duration-500">
                     </div>
@@ -223,15 +269,15 @@
                         <h3 class="text-xl font-bold mb-1">Ana Beatriz</h3>
                         <div class="text-blue-600 mb-3">Professora Sênior</div>
                         <p class="text-gray-600 mb-4">Mestra em Linguística pela Universidade de Cambridge com 12 anos de experiência em ensino de inglês.</p>
-                        <div class="flex space-x-2">
-                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded">Conversação</span>
-                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded">Negócios</span>
-                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded">Pronúncia</span>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-600 text-xs px-3 py-1 rounded-full">Conversação</span>
+                            <span class="bg-blue-100 text-blue-600 text-xs px-3 py-1 rounded-full">Negócios</span>
+                            <span class="bg-blue-100 text-blue-600 text-xs px-3 py-1 rounded-full">Pronúncia</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="bg-white rounded-lg overflow-hidden shadow-md teacher-card transition">
+                <div class="bg-white rounded-xl overflow-hidden shadow-md teacher-card transition hover:shadow-lg">
                     <div class="relative overflow-hidden h-64">
                         <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Professor Mark" class="w-full h-full object-cover transition duration-500">
                     </div>
@@ -239,15 +285,15 @@
                         <h3 class="text-xl font-bold mb-1">Mark Johnson</h3>
                         <div class="text-blue-600 mb-3">Professor Nativo</div>
                         <p class="text-gray-600 mb-4">Nativo dos EUA com especialização em ESL (English as a Second Language) e experiência em 5 países.</p>
-                        <div class="flex space-x-2">
-                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded">Inglês Americano</span>
-                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded">Viagens</span>
-                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded">Cultura</span>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-600 text-xs px-3 py-1 rounded-full">Inglês Americano</span>
+                            <span class="bg-blue-100 text-blue-600 text-xs px-3 py-1 rounded-full">Viagens</span>
+                            <span class="bg-blue-100 text-blue-600 text-xs px-3 py-1 rounded-full">Cultura</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="bg-white rounded-lg overflow-hidden shadow-md teacher-card transition">
+                <div class="bg-white rounded-xl overflow-hidden shadow-md teacher-card transition hover:shadow-lg">
                     <div class="relative overflow-hidden h-64">
                         <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Professora Carla" class="w-full h-full object-cover transition duration-500">
                     </div>
@@ -255,17 +301,17 @@
                         <h3 class="text-xl font-bold mb-1">Carla Mendes</h3>
                         <div class="text-blue-600 mb-3">Coordenadora Pedagógica</div>
                         <p class="text-gray-600 mb-4">Doutora em Educação com foco em aquisição de segunda língua e autora de 3 livros sobre ensino de inglês.</p>
-                        <div class="flex space-x-2">
-                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded">Gramática</span>
-                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded">Preparatório</span>
-                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded">Metodologia</span>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-600 text-xs px-3 py-1 rounded-full">Gramática</span>
+                            <span class="bg-blue-100 text-blue-600 text-xs px-3 py-1 rounded-full">Preparatório</span>
+                            <span class="bg-blue-100 text-blue-600 text-xs px-3 py-1 rounded-full">Metodologia</span>
                         </div>
                     </div>
                 </div>
             </div>
             
             <div class="text-center mt-12">
-                <a href="#contact" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded font-medium transition">Quero estudar com esses professores</a>
+                <a href="#contact" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">Quero estudar com esses professores</a>
             </div>
         </div>
     </section>
@@ -274,137 +320,141 @@
     <section class="py-20" id="courses">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold mb-4">Nossos Cursos</h2>
+                <h2 class="text-3xl font-bold mb-4 section-title">Nossos Cursos</h2>
                 <p class="text-xl text-gray-600 max-w-2xl mx-auto">Programas descomplicados para diferentes necessidades.</p>
             </div>
             
             <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <div class="bg-white rounded-lg overflow-hidden shadow-md course-card transition">
-                    <div class="bg-blue-600 text-white py-4 px-6">
+                <div class="bg-white rounded-xl overflow-hidden shadow-md course-card">
+                    <div class="bg-gradient-to-r from-blue-600 to-blue-500 text-white py-6 px-8">
                         <h3 class="text-xl font-bold">Básico Essencial</h3>
-                        <div class="text-sm opacity-80">Para iniciantes</div>
+                        <div class="text-sm opacity-90">Para iniciantes</div>
                     </div>
-                    <div class="p-6">
+                    <div class="p-8">
                         <div class="text-3xl font-bold mb-4">R$ 199<span class="text-sm font-normal text-gray-600">/mês</span></div>
-                        <ul class="space-y-3 mb-6">
+                        <ul class="space-y-3 mb-8">
                             <li class="flex items-start">
-                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
                                 <span>Vocabulário essencial</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
                                 <span>Gramática simplificada</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
                                 <span>4 aulas por mês</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
                                 <span>Material digital</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
                                 <span>Acesso à comunidade</span>
                             </li>
                         </ul>
-                        <a href="#contact" class="block text-center bg-blue-600 hover:bg-blue-700 text-white py-2 rounded transition">Quero este</a>
+                        <a href="#contact" class="block text-center bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg transition hover:shadow-md">Quero este</a>
                     </div>
                 </div>
                 
-                <div class="bg-white rounded-lg overflow-hidden shadow-lg course-card transition transform scale-105">
-                    <div class="bg-blue-800 text-white py-4 px-6 relative">
-                        <div class="absolute -top-3 -right-3 bg-yellow-400 text-blue-800 text-xs font-bold px-3 py-1 rounded-full">MAIS POPULAR</div>
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg course-card transform scale-105 relative">
+                    <div class="absolute -top-3 -right-3 bg-yellow-400 text-blue-800 text-xs font-bold px-4 py-1 rounded-full z-10">MAIS POPULAR</div>
+                    <div class="bg-gradient-to-r from-blue-700 to-blue-600 text-white py-6 px-8">
                         <h3 class="text-xl font-bold">Intermediário Prático</h3>
-                        <div class="text-sm opacity-80">Mais vendido</div>
+                        <div class="text-sm opacity-90">Mais vendido</div>
                     </div>
-                    <div class="p-6">
+                    <div class="p-8">
                         <div class="text-3xl font-bold mb-4">R$ 299<span class="text-sm font-normal text-gray-600">/mês</span></div>
-                        <ul class="space-y-3 mb-6">
+                        <ul class="space-y-3 mb-8">
                             <li class="flex items-start">
-                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
                                 <span>Conversação prática</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
                                 <span>Expressões do dia a dia</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
                                 <span>6 aulas por mês</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
                                 <span>Grupos de prática</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
                                 <span>Material digital</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
                                 <span>Feedback personalizado</span>
                             </li>
                         </ul>
-                        <a href="#contact" class="block text-center bg-blue-800 hover:bg-blue-900 text-white py-2 rounded transition">Quero este</a>
+                        <a href="#contact" class="block text-center bg-blue-700 hover:bg-blue-800 text-white py-3 rounded-lg transition hover:shadow-md">Quero este</a>
                     </div>
                 </div>
                 
-                <div class="bg-white rounded-lg overflow-hidden shadow-md course-card transition">
-                    <div class="bg-blue-600 text-white py-4 px-6">
+                <div class="bg-white rounded-xl overflow-hidden shadow-md course-card">
+                    <div class="bg-gradient-to-r from-blue-600 to-blue-500 text-white py-6 px-8">
                         <h3 class="text-xl font-bold">Avançado Fluente</h3>
-                        <div class="text-sm opacity-80">Para quem busca excelência</div>
+                        <div class="text-sm opacity-90">Para quem busca excelência</div>
                     </div>
-                    <div class="p-6">
+                    <div class="p-8">
                         <div class="text-3xl font-bold mb-4">R$ 399<span class="text-sm font-normal text-gray-600">/mês</span></div>
-                        <ul class="space-y-3 mb-6">
+                        <ul class="space-y-3 mb-8">
                             <li class="flex items-start">
-                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
                                 <span>Fluência avançada</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
                                 <span>Negócios e cultura</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
                                 <span>8 aulas por mês</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
                                 <span>Mentoria individual</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
                                 <span>Material premium</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
                                 <span>Simulações reais</span>
                             </li>
                         </ul>
-                        <a href="#contact" class="block text-center bg-blue-600 hover:bg-blue-700 text-white py-2 rounded transition">Quero este</a>
+                        <a href="#contact" class="block text-center bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg transition hover:shadow-md">Quero este</a>
                     </div>
                 </div>
             </div>
             
             <!-- Additional Course Options -->
             <div class="mt-16 grid md:grid-cols-2 gap-8">
-                <div class="bg-white p-8 rounded-lg shadow-sm border-l-4 border-blue-600">
+                <div class="bg-white p-8 rounded-xl shadow-sm border-l-4 border-blue-600 hover:shadow-md transition">
                     <h3 class="text-xl font-bold mb-4">Inglês para Negócios</h3>
                     <p class="text-gray-600 mb-6">Programa especializado para profissionais que precisam se comunicar efetivamente no mundo corporativo.</p>
                     <div class="flex justify-between items-center">
                         <span class="text-blue-600 font-bold">A partir de R$ 349/mês</span>
-                        <a href="#contact" class="text-blue-600 hover:text-blue-800 font-medium">Saiba mais →</a>
+                        <a href="#contact" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                            Saiba mais <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
                     </div>
                 </div>
                 
-                <div class="bg-white p-8 rounded-lg shadow-sm border-l-4 border-blue-600">
+                <div class="bg-white p-8 rounded-xl shadow-sm border-l-4 border-blue-600 hover:shadow-md transition">
                     <h3 class="text-xl font-bold mb-4">Preparatório para Viagens</h3>
                     <p class="text-gray-600 mb-6">Curso intensivo para quem vai viajar e precisa aprender rápido o essencial para se comunicar no exterior.</p>
                     <div class="flex justify-between items-center">
                         <span class="text-blue-600 font-bold">Pacotes a partir de R$ 499</span>
-                        <a href="#contact" class="text-blue-600 hover:text-blue-800 font-medium">Saiba mais →</a>
+                        <a href="#contact" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                            Saiba mais <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -415,7 +465,7 @@
     <section class="py-20 bg-gray-50" id="results">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold mb-4">Resultados Comprovados</h2>
+                <h2 class="text-3xl font-bold mb-4 section-title">Resultados Comprovados</h2>
                 <p class="text-xl text-gray-600 max-w-2xl mx-auto">Veja o progresso que nossos alunos alcançam em poucos meses.</p>
             </div>
             
@@ -426,49 +476,49 @@
                             <span class="font-medium">Conversação Básica</span>
                             <span class="text-blue-600 font-bold">92%</span>
                         </div>
-                        <div class="w-full bg-gray-200 rounded-full h-2.5">
-                            <div class="bg-blue-600 h-2.5 rounded-full progress-bar" style="width: 92%"></div>
+                        <div class="w-full bg-gray-200 rounded-full h-3">
+                            <div class="bg-gradient-to-r from-blue-500 to-blue-400 h-3 rounded-full progress-bar" style="width: 92%"></div>
                         </div>
                     </div>
-                    
+                                    
                     <div class="mb-8">
                         <div class="flex justify-between mb-2">
                             <span class="font-medium">Compreensão Auditiva</span>
                             <span class="text-blue-600 font-bold">88%</span>
                         </div>
-                        <div class="w-full bg-gray-200 rounded-full h-2.5">
-                            <div class="bg-blue-600 h-2.5 rounded-full progress-bar" style="width: 88%"></div>
+                        <div class="w-full bg-gray-200 rounded-full h-3">
+                            <div class="bg-gradient-to-r from-blue-500 to-blue-400 h-3 rounded-full progress-bar" style="width: 88%"></div>
                         </div>
                     </div>
-                    
+                                    
                     <div class="mb-8">
                         <div class="flex justify-between mb-2">
                             <span class="font-medium">Vocabulário Essencial</span>
                             <span class="text-blue-600 font-bold">95%</span>
                         </div>
-                        <div class="w-full bg-gray-200 rounded-full h-2.5">
-                            <div class="bg-blue-600 h-2.5 rounded-full progress-bar" style="width: 95%"></div>
+                        <div class="w-full bg-gray-200 rounded-full h-3">
+                            <div class="bg-gradient-to-r from-blue-500 to-blue-400 h-3 rounded-full progress-bar" style="width: 95%"></div>
                         </div>
                     </div>
-                    
+                                    
                     <div class="mb-8">
                         <div class="flex justify-between mb-2">
                             <span class="font-medium">Confiança ao Falar</span>
                             <span class="text-blue-600 font-bold">85%</span>
                         </div>
-                        <div class="w-full bg-gray-200 rounded-full h-2.5">
-                            <div class="bg-blue-600 h-2.5 rounded-full progress-bar" style="width: 85%"></div>
+                        <div class="w-full bg-gray-200 rounded-full h-3">
+                            <div class="bg-gradient-to-r from-blue-500 to-blue-400 h-3 rounded-full progress-bar" style="width: 85%"></div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="bg-white p-8 rounded-lg shadow-lg">
+                <div class="bg-white p-8 rounded-xl shadow-lg">
                     <h3 class="text-xl font-bold mb-4">Metodologia de Avaliação</h3>
                     <p class="text-gray-600 mb-6">Nossos resultados são baseados em avaliações periódicas com mais de 1.000 alunos após 6 meses de curso.</p>
-                    
+                                    
                     <div class="space-y-4">
                         <div class="flex items-start">
-                            <div class="bg-blue-100 text-blue-600 p-2 rounded-full mr-4">
+                            <div class="bg-blue-100 text-blue-600 p-3 rounded-full mr-4">
                                 <i class="fas fa-chart-pie"></i>
                             </div>
                             <div>
@@ -476,19 +526,19 @@
                                 <p class="text-gray-600">Testes práticos para medir o progresso em cada habilidade linguística.</p>
                             </div>
                         </div>
-                        
+                                                
                         <div class="flex items-start">
-                            <div class="bg-blue-100 text-blue-600 p-2 rounded-full mr-4">
+                            <div class="bg-blue-100 text-blue-600 p-3 rounded-full mr-4">
                                 <i class="fas fa-user-check"></i>
                             </div>
                             <div>
                                 <h4 class="font-bold mb-1">Feedback dos Professores</h4>
-                                <p class="text-gray-600">Análise detalhada del desempenho em cada aula.</p>
+                                <p class="text-gray-600">Análise detalhada do desempenho em cada aula.</p>
                             </div>
                         </div>
-                        
+                                                
                         <div class="flex items-start">
-                            <div class="bg-blue-100 text-blue-600 p-2 rounded-full mr-4">
+                            <div class="bg-blue-100 text-blue-600 p-3 rounded-full mr-4">
                                 <i class="fas fa-award"></i>
                             </div>
                             <div>
@@ -506,12 +556,12 @@
     <section class="py-20" id="testimonials">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold mb-4">O que nossos alunos dizem</h2>
+                <h2 class="text-3xl font-bold mb-4 section-title">O que nossos alunos dizem</h2>
                 <p class="text-xl text-gray-600 max-w-2xl mx-auto">Depoimentos reais de quem já transformou seu inglês com nosso método.</p>
             </div>
             
             <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <div class="bg-white p-6 rounded-lg shadow-sm testimonial-card">
+                <div class="bg-white p-8 rounded-xl shadow-sm testimonial-card">
                     <div class="flex items-center mb-4">
                         <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Ana Silva" class="w-12 h-12 rounded-full mr-4">
                         <div>
@@ -531,7 +581,7 @@
                     </div>
                 </div>
                 
-                <div class="bg-white p-6 rounded-lg shadow-sm testimonial-card">
+                <div class="bg-white p-8 rounded-xl shadow-sm testimonial-card">
                     <div class="flex items-center mb-4">
                         <img src="https://randomuser.me/api/portraits/men/43.jpg" alt="Carlos Oliveira" class="w-12 h-12 rounded-full mr-4">
                         <div>
@@ -551,7 +601,7 @@
                     </div>
                 </div>
                 
-                <div class="bg-white p-6 rounded-lg shadow-sm testimonial-card">
+                <div class="bg-white p-8 rounded-xl shadow-sm testimonial-card">
                     <div class="flex items-center mb-4">
                         <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Mariana Costa" class="w-12 h-12 rounded-full mr-4">
                         <div>
@@ -574,10 +624,10 @@
             
             <!-- Video Testimonials -->
             <div class="mt-16 grid md:grid-cols-2 gap-8">
-                <div class="bg-white p-4 rounded-lg shadow-md">
-                    <div class="relative pb-[56.25%] bg-gray-200 rounded overflow-hidden">
+                <div class="bg-white p-4 rounded-xl shadow-md overflow-hidden">
+                    <div class="relative pb-[56.25%] bg-gray-200 rounded-lg overflow-hidden group">
                         <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fas fa-play-circle text-5xl text-blue-600 opacity-80"></i>
+                            <i class="fas fa-play-circle text-5xl text-blue-600 opacity-80 group-hover:opacity-100 transition"></i>
                         </div>
                         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Depoimento em vídeo" class="absolute inset-0 w-full h-full object-cover">
                     </div>
@@ -587,10 +637,10 @@
                     </div>
                 </div>
                 
-                <div class="bg-white p-4 rounded-lg shadow-md">
-                    <div class="relative pb-[56.25%] bg-gray-200 rounded overflow-hidden">
+                <div class="bg-white p-4 rounded-xl shadow-md overflow-hidden">
+                    <div class="relative pb-[56.25%] bg-gray-200 rounded-lg overflow-hidden group">
                         <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fas fa-play-circle text-5xl text-blue-600 opacity-80"></i>
+                            <i class="fas fa-play-circle text-5xl text-blue-600 opacity-80 group-hover:opacity-100 transition"></i>
                         </div>
                         <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Depoimento em vídeo" class="absolute inset-0 w-full h-full object-cover">
                     </div>
@@ -604,13 +654,13 @@
     </section>
 
     <!-- Learning Platform Section -->
-    <section class="py-20 bg-blue-600 text-white">
+    <section class="py-20 bg-gradient-to-r from-blue-600 to-blue-500 text-white">
         <div class="container mx-auto px-4">
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div>
                     <h2 class="text-3xl font-bold mb-6">Plataforma de Aprendizado</h2>
-                    <p class="text-xl mb-8">Acesse suas aulas, materiais e acompanhe seu progresso em qualquer lugar através da nossa plataforma exclusiva.</p>
-                    
+                    <p class="text-xl mb-8 text-blue-100">Acesse suas aulas, materiais e acompanhe seu progresso em qualquer lugar através da nossa plataforma exclusiva.</p>
+                                    
                     <div class="space-y-6">
                         <div class="flex items-start">
                             <div class="bg-blue-700 text-white p-3 rounded-full mr-4">
@@ -621,7 +671,7 @@
                                 <p class="text-blue-100">Aulas ao vivo e gravadas disponíveis 24/7 em nossa plataforma intuitiva.</p>
                             </div>
                         </div>
-                        
+                                                
                         <div class="flex items-start">
                             <div class="bg-blue-700 text-white p-3 rounded-full mr-4">
                                 <i class="fas fa-mobile-alt text-xl"></i>
@@ -631,7 +681,7 @@
                                 <p class="text-blue-100">Estude no celular com nosso app disponível para iOS e Android.</p>
                             </div>
                         </div>
-                        
+                                                
                         <div class="flex items-start">
                             <div class="bg-blue-700 text-white p-3 rounded-full mr-4">
                                 <i class="fas fa-chart-bar text-xl"></i>
@@ -645,8 +695,8 @@
                 </div>
                 
                 <div class="relative">
-                    <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1636&q=80" alt="Plataforma de ensino" class="rounded-lg shadow-xl w-full">
-                    <div class="absolute -bottom-6 -left-6 bg-white text-blue-600 p-4 rounded-lg shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1636&q=80" alt="Plataforma de ensino" class="rounded-xl shadow-xl w-full">
+                    <div class="absolute -bottom-6 -left-6 bg-white text-blue-600 p-4 rounded-xl shadow-lg">
                         <div class="text-2xl font-bold">4.9</div>
                         <div class="text-yellow-400 mb-1">
                             <i class="fas fa-star"></i>
@@ -666,12 +716,12 @@
     <section class="py-20 bg-gray-50" id="faq">
         <div class="container mx-auto px-4 max-w-3xl">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold mb-4">Perguntas Frequentes</h2>
+                <h2 class="text-3xl font-bold mb-4 section-title">Perguntas Frequentes</h2>
                 <p class="text-xl text-gray-600">Tire suas dúvidas sobre nosso método e cursos.</p>
             </div>
             
             <div class="space-y-4">
-                <div class="bg-white p-6 rounded-lg shadow-sm">
+                <div class="bg-white p-6 rounded-xl shadow-sm">
                     <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(1)">
                         <h3 class="font-bold">Qual a diferença do método Fluency para outros cursos?</h3>
                         <i class="fas fa-chevron-down transition-transform" id="faq-icon-1"></i>
@@ -681,7 +731,7 @@
                     </div>
                 </div>
                 
-                <div class="bg-white p-6 rounded-lg shadow-sm">
+                <div class="bg-white p-6 rounded-xl shadow-sm">
                     <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(2)">
                         <h3 class="font-bold">Quanto tempo leva para ficar fluente?</h3>
                         <i class="fas fa-chevron-down transition-transform" id="faq-icon-2"></i>
@@ -691,7 +741,7 @@
                     </div>
                 </div>
                 
-                <div class="bg-white p-6 rounded-lg shadow-sm">
+                <div class="bg-white p-6 rounded-xl shadow-sm">
                     <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(3)">
                         <h3 class="font-bold">As aulas são individuais ou em grupo?</h3>
                         <i class="fas fa-chevron-down transition-transform" id="faq-icon-3"></i>
@@ -701,7 +751,7 @@
                     </div>
                 </div>
                 
-                <div class="bg-white p-6 rounded-lg shadow-sm">
+                <div class="bg-white p-6 rounded-xl shadow-sm">
                     <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(4)">
                         <h3 class="font-bold">Preciso comprar material adicional?</h3>
                         <i class="fas fa-chevron-down transition-transform" id="faq-icon-4"></i>
@@ -711,7 +761,7 @@
                     </div>
                 </div>
                 
-                <div class="bg-white p-6 rounded-lg shadow-sm">
+                <div class="bg-white p-6 rounded-xl shadow-sm">
                     <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(5)">
                         <h3 class="font-bold">E se eu não me adaptar ao método?</h3>
                         <i class="fas fa-chevron-down transition-transform" id="faq-icon-5"></i>
@@ -721,7 +771,7 @@
                     </div>
                 </div>
                 
-                <div class="bg-white p-6 rounded-lg shadow-sm">
+                <div class="bg-white p-6 rounded-xl shadow-sm">
                     <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(6)">
                         <h3 class="font-bold">Como são agendadas as aulas?</h3>
                         <i class="fas fa-chevron-down transition-transform" id="faq-icon-6"></i>
@@ -731,7 +781,7 @@
                     </div>
                 </div>
                 
-                <div class="bg-white p-6 rounded-lg shadow-sm">
+                <div class="bg-white p-6 rounded-xl shadow-sm">
                     <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(7)">
                         <h3 class="font-bold">Há certificado ao final do curso?</h3>
                         <i class="fas fa-chevron-down transition-transform" id="faq-icon-7"></i>
@@ -745,22 +795,22 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-20 bg-blue-800 text-white">
+    <section class="py-20 bg-gradient-to-r from-blue-700 to-blue-600 text-white">
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-3xl font-bold mb-6">Pronto para transformar seu inglês?</h2>
             <p class="text-xl mb-8 max-w-2xl mx-auto">Agende uma aula experimental gratuita e experimente nosso método na prática.</p>
-            <a href="#contact" class="inline-block bg-white hover:bg-gray-100 text-blue-800 px-8 py-3 rounded font-medium transition">Agendar aula grátis</a>
+            <a href="#contact" class="inline-block bg-white hover:bg-gray-100 text-blue-800 px-8 py-4 rounded-lg font-medium transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">Agendar aula grátis</a>
             
             <div class="mt-8 flex flex-wrap justify-center gap-4">
-                <div class="flex items-center bg-blue-700 px-4 py-2 rounded-full">
+                <div class="flex items-center bg-blue-600 px-5 py-2 rounded-full">
                     <i class="fas fa-check-circle mr-2"></i>
                     <span>Sem compromisso</span>
                 </div>
-                <div class="flex items-center bg-blue-700 px-4 py-2 rounded-full">
+                <div class="flex items-center bg-blue-600 px-5 py-2 rounded-full">
                     <i class="fas fa-check-circle mr-2"></i>
                     <span>30 minutos de aula</span>
                 </div>
-                <div class="flex items-center bg-blue-700 px-4 py-2 rounded-full">
+                <div class="flex items-center bg-blue-600 px-5 py-2 rounded-full">
                     <i class="fas fa-check-circle mr-2"></i>
                     <span>Avaliação de nível</span>
                 </div>
@@ -772,28 +822,28 @@
     <section class="py-20" id="contact">
         <div class="container mx-auto px-4 max-w-4xl">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold mb-4">Entre em Contato</h2>
+                <h2 class="text-3xl font-bold mb-4 section-title">Entre em Contato</h2>
                 <p class="text-xl text-gray-600">Preencha o formulário abaixo e nossa equipe entrará em contato em até 24h.</p>
             </div>
             
             <div class="grid md:grid-cols-2 gap-12">
-                <form class="bg-white p-8 rounded-lg shadow-sm">
+                <form class="bg-white p-8 rounded-xl shadow-sm">
                     <div class="grid md:grid-cols-2 gap-6 mb-6">
                         <div>
-                            <label for="name" class="block text-gray-700 mb-2">Nome completo</label>
-                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <label for="name" class="block text-gray-700 mb-2 font-medium">Nome completo</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 input-focus">
                         </div>
                         <div>
-                            <label for="email" class="block text-gray-700 mb-2">E-mail</label>
-                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <label for="email" class="block text-gray-700 mb-2 font-medium">E-mail</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 input-focus">
                         </div>
                         <div>
-                            <label for="phone" class="block text-gray-700 mb-2">Telefone</label>
-                            <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <label for="phone" class="block text-gray-700 mb-2 font-medium">Telefone</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 input-focus">
                         </div>
                         <div>
-                            <label for="course" class="block text-gray-700 mb-2">Curso de interesse</label>
-                            <select id="course" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <label for="course" class="block text-gray-700 mb-2 font-medium">Curso de interesse</label>
+                            <select id="course" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 input-focus">
                                 <option value="">Selecione</option>
                                 <option value="basic">Básico Essencial</option>
                                 <option value="intermediate">Intermediário Prático</option>
@@ -804,14 +854,14 @@
                         </div>
                     </div>
                     <div class="mb-6">
-                        <label for="message" class="block text-gray-700 mb-2">Mensagem (opcional)</label>
-                        <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                        <label for="message" class="block text-gray-700 mb-2 font-medium">Mensagem (opcional)</label>
+                        <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 input-focus"></textarea>
                     </div>
-                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded font-medium transition">Enviar mensagem</button>
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium transition hover:shadow-md">Enviar mensagem</button>
                 </form>
                 
                 <div>
-                    <div class="bg-white p-8 rounded-lg shadow-sm h-full">
+                    <div class="bg-white p-8 rounded-xl shadow-sm h-full">
                         <h3 class="text-xl font-bold mb-6">Outras formas de contato</h3>
                         
                         <div class="space-y-6">
@@ -822,6 +872,158 @@
                                 <div>
                                     <h4 class="font-bold mb-1">Endereço</h4>
                                     <p class="text-gray-600">Av. Paulista, 1000 - São Paulo/SP</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 text-blue-600 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">E-mail</h4>
+                                    <p class="text-gray-600">contato@fluency.com.br</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 text-blue-600 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Telefone</h4>
+                                    <p class="text-gray-600">(11) 1234-5678</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 text-blue-600 p-3 rounded-full mr-4">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Horário de atendimento</h4>
+                                    <p class="text-gray-600">Segunda a sexta, das 9h às 18h</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-bold mb-4">Nos siga nas redes sociais</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="bg-blue-100 text-blue-600 p-3 rounded-full hover:bg-blue-200 transition">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="bg-blue-100 text-blue-600 p-3 rounded-full hover:bg-blue-200 transition">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="bg-blue-100 text-blue-600 p-3 rounded-full hover:bg-blue-200 transition">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="bg-blue-100 text-blue-600 p-3 rounded-full hover:bg-blue-200 transition">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Footer -->
+    <footer class="py-12 bg-gray-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-language text-2xl text-blue-400 mr-2"></i>
+                        <span class="text-xl font-bold text-blue-400">Fluency</span>
+                    </div>
+                    <p class="text-gray-400">O método minimalista para aprender inglês de forma eficiente e sem complicações.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Cursos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Básico Essencial</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Intermediário Prático</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Avançado Fluente</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Inglês para Negócios</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Preparatório para Viagens</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Links Úteis</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Sobre nós</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Professores</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Depoimentos</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Política de Privacidade</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Receba dicas e conteúdos exclusivos sobre aprendizado de inglês.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Seu e-mail" class="px-4 py-2 rounded-l-lg focus:outline-none text-gray-800 w-full">
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-r-lg">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Fluency. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // FAQ toggle function
+        function toggleFAQ(id) {
+            const content = document.getElementById('faq-content-' + id);
+            const icon = document.getElementById('faq-icon-' + id);
+            
+            content.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+
+        // Animate progress bars on scroll
+        function animateProgressBars() {
+            const progressBars = document.querySelectorAll('.progress-bar');
+            progressBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
+            });
+        }
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.classList.contains('progress-bar')) {
+                        animateProgressBars();
+                    }
+                    entry.target.classList.add('animate-fadeIn');
+                }
+            });
+        }, {threshold: 0.1});
+
+        document.querySelectorAll('.progress-bar').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
