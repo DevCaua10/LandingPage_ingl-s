@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluency | Curso de Inglês Minimalista</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: scale(1.03);
+        }
+        
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .teacher-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .progress-bar {
+            transition: width 1.5s ease-in-out;
+        }
+        
+        .floating-badge {
+            animation: float 3s ease-in-out infinite;
+            animation-delay: 0.5s;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800">
+    <!-- Header -->
+    <header class="fixed w-full bg-white shadow-sm z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fas fa-language text-2xl text-blue-600 mr-2"></i>
+                <span class="text-xl font-bold text-blue-600">Fluency</span>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="text-gray-700 hover:text-blue-600 transition">Início</a>
+                <a href="#method" class="text-gray-700 hover:text-blue-600 transition">Método</a>
+                <a href="#teachers" class="text-gray-700 hover:text-blue-600 transition">Professores</a>
+                <a href="#courses" class="text-gray-700 hover:text-blue-600 transition">Cursos</a>
+                <a href="#results" class="text-gray-700 hover:text-blue-600 transition">Resultados</a>
+                <a href="#testimonials" class="text-gray-700 hover:text-blue-600 transition">Depoimentos</a>
+                <a href="#faq" class="text-gray-700 hover:text-blue-600 transition">FAQ</a>
+            </nav>
+            <button class="md:hidden text-gray-700" id="mobile-menu-button">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+            <div class="hidden md:block">
+                <a href="#contact" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Agende uma aula</a>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-white w-full py-4 px-4 shadow-md" id="mobile-menu">
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="text-gray-700 hover:text-blue-600 transition">Início</a>
+                <a href="#method" class="text-gray-700 hover:text-blue-600 transition">Método</a>
+                <a href="#teachers" class="text-gray-700 hover:text-blue-600 transition">Professores</a>
+                <a href="#courses" class="text-gray-700 hover:text-blue-600 transition">Cursos</a>
+                <a href="#results" class="text-gray-700 hover:text-blue-600 transition">Resultados</a>
+                <a href="#testimonials" class="text-gray-700 hover:text-blue-600 transition">Depoimentos</a>
+                <a href="#faq" class="text-gray-700 hover:text-blue-600 transition">FAQ</a>
+                <a href="#contact" class="bg-blue-600 text-white px-4 py-2 rounded text-center hover:bg-blue-700 transition">Agende uma aula</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center pt-16" id="home">
+        <div class="container mx-auto px-4 py-20 text-white">
+            <div class="max-w-2xl">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">Inglês simplificado, resultados reais</h1>
+                <p class="text-xl mb-8">Nosso método minimalista elimina a complexidade e foca no que realmente importa para você alcançar a fluência.</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded text-center font-medium transition">Comece agora</a>
+                    <a href="#method" class="bg-white hover:bg-gray-100 text-blue-600 px-6 py-3 rounded text-center font-medium transition">Conheça o método</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="bg-gray-50 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="p-4">
+                    <div class="text-3xl font-bold text-blue-600 mb-2">10+</div>
+                    <div class="text-gray-600">Anos de experiência</div>
+                </div>
+                <div class="p-4">
+                    <div class="text-3xl font-bold text-blue-600 mb-2">5K+</div>
+                    <div class="text-gray-600">Alunos formados</div>
+                </div>
+                <div class="p-4">
+                    <div class="text-3xl font-bold text-blue-600 mb-2">98%</div>
+                    <div class="text-gray-600">Taxa de satisfação</div>
+                </div>
+                <div class="p-4">
+                    <div class="text-3xl font-bold text-blue-600 mb-2">20</div>
+                    <div class="text-gray-600">Países com alunos</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Method Section -->
+    <section class="py-20" id="method">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">O Método Fluency</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Focamos no essencial para que você aprenda de forma eficiente e sem complicações.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Foco na comunicação</h3>
+                    <p class="text-gray-600">Priorizamos o que você realmente precisa para se comunicar, eliminando conteúdos desnecessários.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <i class="fas fa-user-clock"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Flexibilidade</h3>
+                    <p class="text-gray-600">Aulas adaptáveis ao seu ritmo e horários, sem pressão ou prazos irreais.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Resultados mensuráveis</h3>
+                    <p class="text-gray-600">Acompanhamento constante do seu progresso com métricas claras e objetivas.</p>
+                </div>
+            </div>
+            
+            <!-- Expanded Method Details -->
+            <div class="mt-16 grid md:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Método Fluency" class="rounded-lg shadow-lg w-full">
+                    <div class="absolute -bottom-5 -right-5 bg-blue-600 text-white px-6 py-3 rounded-lg shadow-lg floating-badge">
+                        <span class="font-bold">Método Comprovado</span>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Por que nosso método funciona?</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 text-blue-600 p-2 rounded-full mr-4">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Aprendizado Contextualizado</h4>
+                                <p class="text-gray-600">Você aprenda inglês através de situações reais do seu dia a dia, tornando o aprendizado mais relevante e memorável.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 text-blue-600 p-2 rounded-full mr-4">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Repetição Espaçada</h4>
+                                <p class="text-gray-600">Utilizamos técnicas de memorização baseadas em evidências científicas para garantir que você não esqueça o que aprendeu.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 text-blue-600 p-2 rounded-full mr-4">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Feedback Contínuo</h4>
+                                <p class="text-gray-600">Correções em tempo real e acompanhamento personalizado garantem que você esteja sempre no caminho certo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teachers Section -->
+    <section class="py-20 bg-gray-50" id="teachers">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Nossos Professores</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Equipe de especialistas com experiência internacional.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white rounded-lg overflow-hidden shadow-md teacher-card transition">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Professora Ana" class="w-full h-full object-cover transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1">Ana Beatriz</h3>
+                        <div class="text-blue-600 mb-3">Professora Sênior</div>
+                        <p class="text-gray-600 mb-4">Mestra em Linguística pela Universidade de Cambridge com 12 anos de experiência em ensino de inglês.</p>
+                        <div class="flex space-x-2">
+                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded">Conversação</span>
+                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded">Negócios</span>
+                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded">Pronúncia</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg overflow-hidden shadow-md teacher-card transition">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Professor Mark" class="w-full h-full object-cover transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1">Mark Johnson</h3>
+                        <div class="text-blue-600 mb-3">Professor Nativo</div>
+                        <p class="text-gray-600 mb-4">Nativo dos EUA com especialização em ESL (English as a Second Language) e experiência em 5 países.</p>
+                        <div class="flex space-x-2">
+                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded">Inglês Americano</span>
+                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded">Viagens</span>
+                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded">Cultura</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg overflow-hidden shadow-md teacher-card transition">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Professora Carla" class="w-full h-full object-cover transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1">Carla Mendes</h3>
+                        <div class="text-blue-600 mb-3">Coordenadora Pedagógica</div>
+                        <p class="text-gray-600 mb-4">Doutora em Educação com foco em aquisição de segunda língua e autora de 3 livros sobre ensino de inglês.</p>
+                        <div class="flex space-x-2">
+                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded">Gramática</span>
+                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded">Preparatório</span>
+                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded">Metodologia</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#contact" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded font-medium transition">Quero estudar com esses professores</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="py-20" id="courses">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Nossos Cursos</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Programas descomplicados para diferentes necessidades.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white rounded-lg overflow-hidden shadow-md course-card transition">
+                    <div class="bg-blue-600 text-white py-4 px-6">
+                        <h3 class="text-xl font-bold">Básico Essencial</h3>
+                        <div class="text-sm opacity-80">Para iniciantes</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-3xl font-bold mb-4">R$ 199<span class="text-sm font-normal text-gray-600">/mês</span></div>
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Vocabulário essencial</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Gramática simplificada</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>4 aulas por mês</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Material digital</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Acesso à comunidade</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="block text-center bg-blue-600 hover:bg-blue-700 text-white py-2 rounded transition">Quero este</a>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg course-card transition transform scale-105">
+                    <div class="bg-blue-800 text-white py-4 px-6 relative">
+                        <div class="absolute -top-3 -right-3 bg-yellow-400 text-blue-800 text-xs font-bold px-3 py-1 rounded-full">MAIS POPULAR</div>
+                        <h3 class="text-xl font-bold">Intermediário Prático</h3>
+                        <div class="text-sm opacity-80">Mais vendido</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-3xl font-bold mb-4">R$ 299<span class="text-sm font-normal text-gray-600">/mês</span></div>
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Conversação prática</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Expressões do dia a dia</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>6 aulas por mês</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Grupos de prática</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Material digital</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Feedback personalizado</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="block text-center bg-blue-800 hover:bg-blue-900 text-white py-2 rounded transition">Quero este</a>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg overflow-hidden shadow-md course-card transition">
+                    <div class="bg-blue-600 text-white py-4 px-6">
+                        <h3 class="text-xl font-bold">Avançado Fluente</h3>
+                        <div class="text-sm opacity-80">Para quem busca excelência</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-3xl font-bold mb-4">R$ 399<span class="text-sm font-normal text-gray-600">/mês</span></div>
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Fluência avançada</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Negócios e cultura</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>8 aulas por mês</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Mentoria individual</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Material premium</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Simulações reais</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="block text-center bg-blue-600 hover:bg-blue-700 text-white py-2 rounded transition">Quero este</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Additional Course Options -->
+            <div class="mt-16 grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-sm border-l-4 border-blue-600">
+                    <h3 class="text-xl font-bold mb-4">Inglês para Negócios</h3>
+                    <p class="text-gray-600 mb-6">Programa especializado para profissionais que precisam se comunicar efetivamente no mundo corporativo.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-blue-600 font-bold">A partir de R$ 349/mês</span>
+                        <a href="#contact" class="text-blue-600 hover:text-blue-800 font-medium">Saiba mais →</a>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-sm border-l-4 border-blue-600">
+                    <h3 class="text-xl font-bold mb-4">Preparatório para Viagens</h3>
+                    <p class="text-gray-600 mb-6">Curso intensivo para quem vai viajar e precisa aprender rápido o essencial para se comunicar no exterior.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-blue-600 font-bold">Pacotes a partir de R$ 499</span>
+                        <a href="#contact" class="text-blue-600 hover:text-blue-800 font-medium">Saiba mais →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="py-20 bg-gray-50" id="results">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Resultados Comprovados</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Veja o progresso que nossos alunos alcançam em poucos meses.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="mb-8">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium">Conversação Básica</span>
+                            <span class="text-blue-600 font-bold">92%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                            <div class="bg-blue-600 h-2.5 rounded-full progress-bar" style="width: 92%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium">Compreensão Auditiva</span>
+                            <span class="text-blue-600 font-bold">88%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                            <div class="bg-blue-600 h-2.5 rounded-full progress-bar" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium">Vocabulário Essencial</span>
+                            <span class="text-blue-600 font-bold">95%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                            <div class="bg-blue-600 h-2.5 rounded-full progress-bar" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium">Confiança ao Falar</span>
+                            <span class="text-blue-600 font-bold">85%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                            <div class="bg-blue-600 h-2.5 rounded-full progress-bar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-bold mb-4">Metodologia de Avaliação</h3>
+                    <p class="text-gray-600 mb-6">Nossos resultados são baseados em avaliações periódicas com mais de 1.000 alunos após 6 meses de curso.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 text-blue-600 p-2 rounded-full mr-4">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Avaliações Mensais</h4>
+                                <p class="text-gray-600">Testes práticos para medir o progresso em cada habilidade linguística.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 text-blue-600 p-2 rounded-full mr-4">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Feedback dos Professores</h4>
+                                <p class="text-gray-600">Análise detalhada del desempenho em cada aula.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 text-blue-600 p-2 rounded-full mr-4">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Certificação de Progresso</h4>
+                                <p class="text-gray-600">Documento oficial atestando suas habilidades a cada nível concluído.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20" id="testimonials">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">O que nossos alunos dizem</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Depoimentos reais de quem já transformou seu inglês com nosso método.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="bg-white p-6 rounded-lg shadow-sm testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Ana Silva" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Ana Silva</h4>
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Depois de tentar vários métodos complexos, encontrei no Fluency a simplicidade que precisava. Em 6 meses já conseguia me comunicar em viagens!"</p>
+                    <div class="mt-4 text-sm text-gray-500">
+                        <i class="fas fa-graduation-cap mr-2"></i> Concluiu o curso Básico Essencial
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/43.jpg" alt="Carlos Oliveira" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Carlos Oliveira</h4>
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"O método minimalista foi perfeito para minha rotina agitada. Aprendi apenas o necessário para minhas reuniões internacionais."</p>
+                    <div class="mt-4 text-sm text-gray-500">
+                        <i class="fas fa-graduation-cap mr-2"></i> Concluiu o Inglês para Negócios
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Mariana Costa" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Mariana Costa</h4>
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Finalmente um curso que não me sobrecarrega com gramática desnecessária. Foco na comunicação real fez toda a diferença!"</p>
+                    <div class="mt-4 text-sm text-gray-500">
+                        <i class="fas fa-graduation-cap mr-2"></i> Concluiu o Avançado Fluente
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Video Testimonials -->
+            <div class="mt-16 grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <div class="relative pb-[56.25%] bg-gray-200 rounded overflow-hidden">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-play-circle text-5xl text-blue-600 opacity-80"></i>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Depoimento em vídeo" class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold">Depoimento de Lucas</h4>
+                        <p class="text-gray-600 text-sm mt-1">Aluno do curso Intermediário Prático</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <div class="relative pb-[56.25%] bg-gray-200 rounded overflow-hidden">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-play-circle text-5xl text-blue-600 opacity-80"></i>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Depoimento em vídeo" class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold">Depoimento de Juliana</h4>
+                        <p class="text-gray-600 text-sm mt-1">Aluna do curso Preparatório para Viagens</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Platform Section -->
+    <section class="py-20 bg-blue-600 text-white">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold mb-6">Plataforma de Aprendizado</h2>
+                    <p class="text-xl mb-8">Acesse suas aulas, materiais e acompanhe seu progresso em qualquer lugar através da nossa plataforma exclusiva.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-blue-700 text-white p-3 rounded-full mr-4">
+                                <i class="fas fa-laptop text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Aulas Online</h4>
+                                <p class="text-blue-100">Aulas ao vivo e gravadas disponíveis 24/7 em nossa plataforma intuitiva.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-700 text-white p-3 rounded-full mr-4">
+                                <i class="fas fa-mobile-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Aplicativo Móvel</h4>
+                                <p class="text-blue-100">Estude no celular com nosso app disponível para iOS e Android.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-700 text-white p-3 rounded-full mr-4">
+                                <i class="fas fa-chart-bar text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Painel de Progresso</h4>
+                                <p class="text-blue-100">Acompanhe suas estatísticas e veja seu desenvolvimento em tempo real.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1636&q=80" alt="Plataforma de ensino" class="rounded-lg shadow-xl w-full">
+                    <div class="absolute -bottom-6 -left-6 bg-white text-blue-600 p-4 rounded-lg shadow-lg">
+                        <div class="text-2xl font-bold">4.9</div>
+                        <div class="text-yellow-400 mb-1">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="text-sm">Avaliação dos alunos</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-gray-50" id="faq">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Perguntas Frequentes</h2>
+                <p class="text-xl text-gray-600">Tire suas dúvidas sobre nosso método e cursos.</p>
+            </div>
+            
+            <div class="space-y-4">
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(1)">
+                        <h3 class="font-bold">Qual a diferença do método Fluency para outros cursos?</h3>
+                        <i class="fas fa-chevron-down transition-transform" id="faq-icon-1"></i>
+                    </button>
+                    <div class="mt-4 text-gray-600 hidden" id="faq-content-1">
+                        <p>Nosso método elimina tudo que não é essencial para a comunicação real. Enquanto outros cursos sobrecarregam com gramática complexa e vocabulário pouco usado, nós focamos no que você realmente precisa para se comunicar de forma eficiente.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(2)">
+                        <h3 class="font-bold">Quanto tempo leva para ficar fluente?</h3>
+                        <i class="fas fa-chevron-down transition-transform" id="faq-icon-2"></i>
+                    </button>
+                    <div class="mt-4 text-gray-600 hidden" id="faq-content-2">
+                        <p>Depende do seu nível inicial e dedicação. Com nosso método, alunos dedicados costumam alcançar um nível de comunicação confortável em 6-8 meses. Fluência avançada pode levar 12-18 meses. Lembrando que "fluência" é relativa - focamos em você conseguir se comunicar bem, não em perfeição.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(3)">
+                        <h3 class="font-bold">As aulas são individuais ou em grupo?</h3>
+                        <i class="fas fa-chevron-down transition-transform" id="faq-icon-3"></i>
+                    </button>
+                    <div class="mt-4 text-gray-600 hidden" id="faq-content-3">
+                        <p>Oferecemos ambas opções. As aulas principais são individuais para focar nas suas necessidades específicas, mas também oferecemos sessões em grupo opcionais para prática de conversação com outros alunos.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(4)">
+                        <h3 class="font-bold">Preciso comprar material adicional?</h3>
+                        <i class="fas fa-chevron-down transition-transform" id="faq-icon-4"></i>
+                    </button>
+                    <div class="mt-4 text-gray-600 hidden" id="faq-content-4">
+                        <p>Não. Todo o material necessário é fornecido digitalmente como parte do curso. Nosso método minimalista significa que você não será sobrecarregado com livros e materiais desnecessários.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(5)">
+                        <h3 class="font-bold">E se eu não me adaptar ao método?</h3>
+                        <i class="fas fa-chevron-down transition-transform" id="faq-icon-5"></i>
+                    </button>
+                    <div class="mt-4 text-gray-600 hidden" id="faq-content-5">
+                        <p>Oferecemos 7 dias de garantia. Se dentro desse período você sentir que o método não é para você, devolvemos 100% do valor investido sem burocracia.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(6)">
+                        <h3 class="font-bold">Como são agendadas as aulas?</h3>
+                        <i class="fas fa-chevron-down transition-transform" id="faq-icon-6"></i>
+                    </button>
+                    <div class="mt-4 text-gray-600 hidden" id="faq-content-6">
+                        <p>Você escolhe os horários que melhor se encaixam na sua rotina. Nossa plataforma permite agendar aulas com professores disponíveis nos horários que você selecionar, com flexibilidade para remarcar quando necessário.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(7)">
+                        <h3 class="font-bold">Há certificado ao final do curso?</h3>
+                        <i class="fas fa-chevron-down transition-transform" id="faq-icon-7"></i>
+                    </button>
+                    <div class="mt-4 text-gray-600 hidden" id="faq-content-7">
+                        <p>Sim, emitimos certificados de conclusão para cada nível concluído, com detalhamento das habilidades adquiridas. Esses certificados são reconhecidos por empresas e instituições de ensino.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-blue-800 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-6">Pronto para transformar seu inglês?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Agende uma aula experimental gratuita e experimente nosso método na prática.</p>
+            <a href="#contact" class="inline-block bg-white hover:bg-gray-100 text-blue-800 px-8 py-3 rounded font-medium transition">Agendar aula grátis</a>
+            
+            <div class="mt-8 flex flex-wrap justify-center gap-4">
+                <div class="flex items-center bg-blue-700 px-4 py-2 rounded-full">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    <span>Sem compromisso</span>
+                </div>
+                <div class="flex items-center bg-blue-700 px-4 py-2 rounded-full">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    <span>30 minutos de aula</span>
+                </div>
+                <div class="flex items-center bg-blue-700 px-4 py-2 rounded-full">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    <span>Avaliação de nível</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-20" id="contact">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Entre em Contato</h2>
+                <p class="text-xl text-gray-600">Preencha o formulário abaixo e nossa equipe entrará em contato em até 24h.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <form class="bg-white p-8 rounded-lg shadow-sm">
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 mb-2">Nome completo</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 mb-2">E-mail</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-gray-700 mb-2">Telefone</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="course" class="block text-gray-700 mb-2">Curso de interesse</label>
+                            <select id="course" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="">Selecione</option>
+                                <option value="basic">Básico Essencial</option>
+                                <option value="intermediate">Intermediário Prático</option>
+                                <option value="advanced">Avançado Fluente</option>
+                                <option value="business">Inglês para Negócios</option>
+                                <option value="travel">Preparatório para Viagens</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block text-gray-700 mb-2">Mensagem (opcional)</label>
+                        <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded font-medium transition">Enviar mensagem</button>
+                </form>
+                
+                <div>
+                    <div class="bg-white p-8 rounded-lg shadow-sm h-full">
+                        <h3 class="text-xl font-bold mb-6">Outras formas de contato</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 text-blue-600 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Endereço</h4>
+                                    <p class="text-gray-600">Av. Paulista, 1000 - São Paulo/SP</p>
+
+</body>
+</html>
